@@ -44,8 +44,9 @@ public class UserServiceImpl implements UserService {
 
         LoginResponse loginResponse = new LoginResponse();
         User user = userRepository.findUserByUserName(loginRequest.getUserName());
-
+        System.out.println(user.getUsername());
         if (user != null) {
+
             if (passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())){
                 String token = jwtTokenProvider.generateToken(user);
                 loginResponse.setToken(token);
