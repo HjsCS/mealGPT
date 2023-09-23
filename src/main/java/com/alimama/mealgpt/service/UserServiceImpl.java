@@ -1,14 +1,13 @@
 package com.alimama.mealgpt.service;
 
 import com.alimama.mealgpt.dao.AuthoritiesRepository;
+import com.alimama.mealgpt.dao.FitnessInfoRepository;
 import com.alimama.mealgpt.dao.UserRepository;
 import com.alimama.mealgpt.entity.Authorities;
+import com.alimama.mealgpt.entity.FitnessInfo;
 import com.alimama.mealgpt.entity.User;
 import com.alimama.mealgpt.entity.WebUser;
-import com.alimama.mealgpt.pojo.LoginRequest;
-import com.alimama.mealgpt.pojo.LoginResponse;
-import com.alimama.mealgpt.pojo.RegisterRequest;
-import com.alimama.mealgpt.pojo.RegisterResponse;
+import com.alimama.mealgpt.pojo.*;
 import com.alimama.mealgpt.security.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -88,6 +87,7 @@ public class UserServiceImpl implements UserService {
     public User findByUserName(String userName) {
         return userRepository.findUserByUserName(userName);
     }
+
 
 
 

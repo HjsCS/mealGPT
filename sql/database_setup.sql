@@ -1,11 +1,11 @@
 CREATE DATABASE  IF NOT EXISTS `meal_gpt`;
 USE `meal_gpt`;
 
-SET foreign_key_checks = 0;
 DROP TABLE IF EXISTS `user`;
 DROP TABLE IF EXISTS `fitness_info`;
 DROP TABLE IF EXISTS `authorities`;
-SET foreign_key_checks = 1;
+DROP TABLE IF EXISTS `gpt_plan`;
+
 
 --
 -- Table structure for table `user`
@@ -46,6 +46,7 @@ DROP TABLE IF EXISTS `fitness_info`;
 
 CREATE TABLE `fitness_info` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userName` varchar(50) NOT NULL,
   `height` DECIMAL(5, 2) NOT NULL,
   `weight` DECIMAL(5, 2) NOT NULL,
   `goal` varchar(255) NOT NULL,
@@ -60,11 +61,11 @@ CREATE TABLE `fitness_info` (
 --
 --
 
-INSERT INTO `fitness_info` (`height`,`weight`,`goal`, `bio_gender`, `age`, `activity_level`)
+INSERT INTO `fitness_info` (`userName`, `height`,`weight`,`goal`, `bio_gender`, `age`, `activity_level`)
 VALUES 
-('172.3','70','more muscle','MALE','32','go to gym once a week'),
-('170.2','50','health','FEMALE','23', 'walk home'),
-('170.4','50','health','FEMALE','32', 'swim twice a week');
+('john', '172.3','70','more muscle','MALE','32','go to gym once a week'),
+('mary','170.2','50','health','FEMALE','23', 'walk home'),
+('susan','170.4','50','health','FEMALE','32', 'swim twice a week');
 
 CREATE TABLE `authorities` (
 	`username` VARCHAR(20) NOT NULL,
@@ -77,4 +78,13 @@ INSERT INTO `authorities` (`username`, `authority`)
 VALUES
 ('john', 'ROLE_USER'),
 ('mary', 'ROLE_USER'),
-('susan', 'ROLE_USER')
+('susan', 'ROLE_USER');
+
+
+CREATE TABLE `gpt_plan` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+    `userName` varchar(50) NOT NULL, 
+    `plan` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+

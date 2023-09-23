@@ -1,7 +1,10 @@
 package com.alimama.mealgpt.controller;
 
+import com.alimama.mealgpt.dao.FitnessInfoRepository;
+import com.alimama.mealgpt.entity.FitnessInfo;
 import com.alimama.mealgpt.pojo.*;
 import com.alimama.mealgpt.result.ApiResult;
+import com.alimama.mealgpt.service.FitnessService;
 import com.alimama.mealgpt.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,9 @@ public class HomeController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private FitnessService fitnessService;
 
     @PostMapping("login")
     public ResponseEntity login(@RequestBody LoginRequest loginRequest) {
@@ -37,7 +43,7 @@ public class HomeController {
 
     }
 
-    @PostMapping("/register")
+    @PostMapping("register")
     public ResponseEntity register(@RequestBody @Valid RegisterRequest registerRequest) {
         RegisterResponse registerResponse = userService.register(registerRequest);
 
@@ -46,9 +52,25 @@ public class HomeController {
         return new ResponseEntity(code, registerResponse);
     }
 
-    @GetMapping("/test")
+    @GetMapping("test")
     public String sayHello() {
         return "Hello World";
     }
+
+    @PostMapping("update")
+    public ResponseEntity updateFitnessInfo(@RequestBody FitnessInfoUpdateRequest fitnessInfoUpdateRequest) {
+        FitnessInfoUpdateResponse fitnessInfoUpdateResponse = fitnessService.update(fitnessInfoUpdateRequest);
+        HttpStatus code;
+        if (fitnessInfoUpdateResponse.getMsg() == null) {
+            code = HttpStatus.BAD_REQUEST;
+            return new ResponseEntity(code, "Fail to Update");
+        } else {
+            code = HttpStatus.ACCEPTED;
+            return new ResponseEntity(code, fitnessInfoUpdateResponse);
+        }
+
+
+    }
+
 
 }

@@ -1,12 +1,8 @@
 package com.alimama.mealgpt.service;
-
+import com.alimama.mealgpt.entity.FitnessInfo;
 import com.alimama.mealgpt.entity.User;
-import com.alimama.mealgpt.entity.WebUser;
-import com.alimama.mealgpt.pojo.LoginRequest;
-import com.alimama.mealgpt.pojo.LoginResponse;
-import com.alimama.mealgpt.pojo.RegisterRequest;
-import com.alimama.mealgpt.pojo.RegisterResponse;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import com.alimama.mealgpt.pojo.*;
+
 
 public interface UserService {
     void save(RegisterRequest registerRequest);

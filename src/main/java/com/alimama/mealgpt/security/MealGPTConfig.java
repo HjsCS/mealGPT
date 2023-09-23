@@ -38,8 +38,9 @@ public class MealGPTConfig {
         http.authorizeHttpRequests(configurer ->
                 configurer
                         .requestMatchers("/user/login").permitAll()
-                        .requestMatchers("/user/hello").permitAll()
+                        .requestMatchers("/user/test").permitAll()
                         .requestMatchers("/user/register").permitAll()
+                        .requestMatchers("/user/update").permitAll()
                         .anyRequest().authenticated()
 
                 );

@@ -13,6 +13,8 @@ public class FitnessInfo {
     @Column(name = "id")
     private int id;
 
+    @Column(name = "userName")
+    private String userName;
     @Column(name = "height")
     private BigDecimal height;
 
@@ -34,8 +36,9 @@ public class FitnessInfo {
     // Constructor
     public FitnessInfo () {}
 
-    public FitnessInfo(BigDecimal height, BigDecimal weight, String goal,
+    public FitnessInfo(String userName, BigDecimal height, BigDecimal weight, String goal,
                        String bioGender, int age, String activityLevel) {
+        this.userName = userName;
         this.height = height;
         this.weight = weight;
         this.goal = goal;
@@ -52,6 +55,14 @@ public class FitnessInfo {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public BigDecimal getHeight() {
@@ -104,14 +115,16 @@ public class FitnessInfo {
 
 
     // toString
+
     @Override
     public String toString() {
         return "FitnessInfo{" +
                 "id=" + id +
+                ", userName='" + userName + '\'' +
                 ", height=" + height +
                 ", weight=" + weight +
                 ", goal='" + goal + '\'' +
-                ", bioGender=" + bioGender +
+                ", bioGender='" + bioGender + '\'' +
                 ", age=" + age +
                 ", activityLevel='" + activityLevel + '\'' +
                 '}';
