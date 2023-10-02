@@ -13,6 +13,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
+import java.util.List;
+
 @RestController
 @RequestMapping("/user")
 public class HomeController {
@@ -72,7 +75,18 @@ public class HomeController {
 
     }
 
-    @GetMapping("test1")
-    public String sayHi() {return "hsjsjss";}
+    @GetMapping("getFitnessInfo")
+    public ResponseListEntity getFitnessInfo(@RequestParam String username) {
+        List<FitnessInfo> fitnessInfoList = fitnessService.getFitnessInfoByUserName(username);
+
+        if (fitnessInfoList == null || fitnessInfoList.isEmpty()) {
+            return new ResponseListEntity(HttpStatus.BAD_REQUEST, Collections.emptyList());
+        } else {
+            System.out.println("FitnessInfo List: " + fitnessInfoList);
+            return new ResponseListEntity(HttpStatus.ACCEPTED, fitnessInfoList);
+        }
+    }
+
+
 
 }

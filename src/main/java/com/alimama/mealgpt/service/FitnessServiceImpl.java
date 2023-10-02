@@ -7,7 +7,11 @@ import com.alimama.mealgpt.pojo.FitnessInfoUpdateResponse;
 import com.alimama.mealgpt.security.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class FitnessServiceImpl implements FitnessService {
@@ -43,6 +47,10 @@ public class FitnessServiceImpl implements FitnessService {
     public void save(FitnessInfo fitnessInfo) {
 
         fitnessInfoRepository.save(fitnessInfo);
+    }
 
+    @Override
+    public List<FitnessInfo> getFitnessInfoByUserName(String username) {
+        return fitnessInfoRepository.findTop5ByUserNameOrderByIdDesc(username);
     }
 }
