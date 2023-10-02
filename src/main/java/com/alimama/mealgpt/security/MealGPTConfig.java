@@ -41,6 +41,7 @@ public class MealGPTConfig {
                         .requestMatchers("/user/test").permitAll()
                         .requestMatchers("/user/register").permitAll()
                         .requestMatchers("/user/update").permitAll()
+                        .requestMatchers("/user/getFitnessInfo").permitAll()
                         .anyRequest().authenticated()
 
                 );
