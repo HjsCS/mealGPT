@@ -72,5 +72,7 @@ public class HomeController {
 
     }
 
+    @GetMapping("test1")
+    public String sayHi() {return "hsjsjss";}
 
 }
