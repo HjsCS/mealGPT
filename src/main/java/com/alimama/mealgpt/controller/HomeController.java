@@ -2,9 +2,11 @@ package com.alimama.mealgpt.controller;
 
 import com.alimama.mealgpt.dao.FitnessInfoRepository;
 import com.alimama.mealgpt.entity.FitnessInfo;
+import com.alimama.mealgpt.entity.GptPlan;
 import com.alimama.mealgpt.pojo.*;
 import com.alimama.mealgpt.result.ApiResult;
 import com.alimama.mealgpt.service.FitnessService;
+import com.alimama.mealgpt.service.PlanService;
 import com.alimama.mealgpt.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,6 +89,18 @@ public class HomeController {
         }
     }
 
+    @Autowired
+    private PlanService planService;
+
+    @PostMapping("savePlan")
+    public ResponseEntity savePlan(@RequestBody GptPlanEntity gptPlanEntity) {
+        try {
+            planService.savePlan(gptPlanEntity);
+            return new ResponseEntity(HttpStatus.ACCEPTED, "Plan saved successfully");
+        } catch (Exception e) {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST, "Error saving the plan");
+        }
+    }
 
 
 }
