@@ -16,10 +16,10 @@ public class FitnessInfo {
     @Column(name = "userName")
     private String userName;
     @Column(name = "height")
-    private BigDecimal height;
+    private double height;
 
     @Column(name = "weight")
-    private BigDecimal weight;
+    private double weight;
 
     @Column(name = "goal")
     private String goal;
@@ -36,7 +36,7 @@ public class FitnessInfo {
     // Constructor
     public FitnessInfo () {}
 
-    public FitnessInfo(String userName, BigDecimal height, BigDecimal weight, String goal,
+    public FitnessInfo(String userName, double height, double weight, String goal,
                        String bioGender, int age, String activityLevel) {
         this.userName = userName;
         this.height = height;
@@ -65,19 +65,19 @@ public class FitnessInfo {
         this.userName = userName;
     }
 
-    public BigDecimal getHeight() {
+    public double getHeight() {
         return height;
     }
 
-    public void setHeight(BigDecimal height) {
+    public void setHeight(double height) {
         this.height = height;
     }
 
-    public BigDecimal getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(BigDecimal weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
