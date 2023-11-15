@@ -20,7 +20,7 @@ public class User implements UserDetails {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "user_name")
+    @Column(name = "userName")
     private String userName;
 
     @Column(name = "phone_number")

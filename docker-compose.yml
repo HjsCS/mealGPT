@@ -13,6 +13,8 @@ services:
     restart: always
     ports:
       - 3307:3306
+    volumes:
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       MYSQL_DATABASE: meal_gpt
       MYSQL_USER: joe
