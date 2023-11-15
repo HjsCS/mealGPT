@@ -129,8 +129,8 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.10.1</version> <!-- Update this version to a one that supports Java 17 -->
             <configuration>
-                <source>17</source>
-                <target>17</target>
+                <source>20</source>
+                <target>20</target>
             </configuration>
         </plugin>
 		</plugins>
